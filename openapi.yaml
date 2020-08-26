@@ -1,0 +1,682 @@
+openapi: 3.0.0
+info:
+  x-skaffolder-id-project: 5f46db3167541c707d179879
+  title: appvaa
+  description: You can obtain JWT token from login API
+  version: 0.1
+servers:
+  - url: http://localhost:3000/api
+    description: Local server for testing
+paths:
+  /login:
+    post:
+      x-skaffolder-ignore: true
+      summary: Login API
+      security: []
+      tags:
+        - Security
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+              example:
+                username: admin
+                password: 62f264d7ad826f02a8af714c0a54b197935b717656b80461686d450f7b3abde4c553541515de2052b9af70f710f0cd8a1a2d3f4d60aa72608d71a63a9a93c0f5
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+  /verifyToken:
+    post:
+      x-skaffolder-ignore: true
+      summary: Verify token API
+      security: []
+      tags:
+        - Security
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+  /changePassword:
+    post:
+      x-skaffolder-ignore: true
+      summary: Change password API
+      tags:
+        - Security
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                passwordNew:
+                  type: string
+                passwordOld:
+                  type: string
+      responses:
+        "200":
+          description: OK
+  "/user/{id}/changePassword":
+    post:
+      x-skaffolder-id: 5f46db3267541c707d179886
+      x-skaffolder-name: changePassword
+      x-skaffolder-id-resource: 5f46db3267541c707d179883
+      x-skaffolder-resource: User
+      x-skaffolder-crudAction: 
+      x-skaffolder-crudType: 
+      x-skaffolder-description: Change password of user from admin
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: object
+      x-skaffolder-url: /{id}/changePassword
+      x-skaffolder-roles:
+        - 5f46db3267541c707d179885
+      summary: Change password of user from admin
+      tags:
+        - User
+      responses:
+        "200":
+          description: OK
+  /user:
+    post:
+      x-skaffolder-id: 5f46db3267541c707d17988b
+      x-skaffolder-name: create
+      x-skaffolder-id-resource: 5f46db3267541c707d179883
+      x-skaffolder-resource: User
+      x-skaffolder-crudAction: create
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION create
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /
+      x-skaffolder-roles: []
+      summary: CRUD ACTION create
+      tags:
+        - User
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                mail:
+                  type: string
+                name:
+                  type: string
+                password:
+                  type: string
+                roles:
+                  type: string
+                surname:
+                  type: string
+                username:
+                  type: string
+    get:
+      x-skaffolder-id: 5f46db3267541c707d179888
+      x-skaffolder-name: list
+      x-skaffolder-id-resource: 5f46db3267541c707d179883
+      x-skaffolder-resource: User
+      x-skaffolder-crudAction: list
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION list
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /
+      x-skaffolder-roles: []
+      summary: CRUD ACTION list
+      tags:
+        - User
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+  "/user/{id}":
+    delete:
+      x-skaffolder-id: 5f46db3267541c707d179887
+      x-skaffolder-name: delete
+      x-skaffolder-id-resource: 5f46db3267541c707d179883
+      x-skaffolder-resource: User
+      x-skaffolder-crudAction: delete
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION delete
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION delete
+      tags:
+        - User
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+    get:
+      x-skaffolder-id: 5f46db3267541c707d17988a
+      x-skaffolder-name: get
+      x-skaffolder-id-resource: 5f46db3267541c707d179883
+      x-skaffolder-resource: User
+      x-skaffolder-crudAction: get
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION get
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION get
+      tags:
+        - User
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id resource
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+    post:
+      x-skaffolder-id: 5f46db3267541c707d179889
+      x-skaffolder-name: update
+      x-skaffolder-id-resource: 5f46db3267541c707d179883
+      x-skaffolder-resource: User
+      x-skaffolder-crudAction: update
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION update
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION update
+      tags:
+        - User
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+security:
+  - bearerAuth: []
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    Cities:
+      x-skaffolder-id: 5f46e56767541c707d17994e
+      x-skaffolder-id-db: 5f46db3167541c707d17987a
+      x-skaffolder-id-entity: 5f46e56767541c707d17994c
+      x-skaffolder-url: /cities
+      properties:
+        _id:
+          type: string
+          x-skaffolder-required: true
+        name:
+          type: string
+          x-skaffolder-id-attr: 5f46e56767541c707d17994d
+          x-skaffolder-type: String
+      x-skaffolder-relations: 
+      required:
+        - _id
+    Classes:
+      x-skaffolder-id: 5f46e59767541c707d179956
+      x-skaffolder-id-db: 5f46db3167541c707d17987a
+      x-skaffolder-id-entity: 5f46e59767541c707d179951
+      x-skaffolder-url: /classes
+      properties:
+        _id:
+          type: string
+          x-skaffolder-required: true
+        days:
+          type: number
+          x-skaffolder-id-attr: 5f46e59767541c707d179952
+          x-skaffolder-type: Number
+        vacancies:
+          type: number
+          x-skaffolder-id-attr: 5f46e59767541c707d179953
+          x-skaffolder-type: Number
+      x-skaffolder-relations:
+        _club:
+          x-skaffolder-id: 5f46e59767541c707d179954
+          x-skaffolder-type: m:m
+          x-skaffolder-ent1: 5f46e59767541c707d179951
+          x-skaffolder-ent2: 5f46e51a67541c707d17992b
+        _student:
+          x-skaffolder-id: 5f46e59767541c707d179955
+          x-skaffolder-type: m:m
+          x-skaffolder-ent1: 5f46e59767541c707d179951
+          x-skaffolder-ent2: 5f46e51a67541c707d17992b
+      required:
+        - _id
+    Clubs:
+      x-skaffolder-id: 5f46e51a67541c707d179939
+      x-skaffolder-id-db: 5f46db3167541c707d17987a
+      x-skaffolder-id-entity: 5f46e51a67541c707d17992b
+      x-skaffolder-url: /clubs
+      properties:
+        _id:
+          type: string
+          x-skaffolder-required: true
+        canoe_oc1:
+          type: number
+          x-skaffolder-id-attr: 5f46e51a67541c707d17992c
+          x-skaffolder-type: Number
+        canoe_oc2:
+          type: number
+          x-skaffolder-id-attr: 5f46e51a67541c707d17992d
+          x-skaffolder-type: Number
+        canoe_oc6:
+          type: number
+          x-skaffolder-id-attr: 5f46e51a67541c707d17992e
+          x-skaffolder-type: Number
+        canoe_oc6_7:
+          type: number
+          x-skaffolder-id-attr: 5f46e51a67541c707d17992f
+          x-skaffolder-type: Number
+        canoe_v1:
+          type: number
+          x-skaffolder-id-attr: 5f46e51a67541c707d179930
+          x-skaffolder-type: Number
+        canoe_v3:
+          type: number
+          x-skaffolder-id-attr: 5f46e51a67541c707d179931
+          x-skaffolder-type: Number
+        canoe_v6:
+          type: number
+          x-skaffolder-id-attr: 5f46e51a67541c707d179932
+          x-skaffolder-type: Number
+        city:
+          type: string
+          x-skaffolder-id-attr: 5f46e51a67541c707d179933
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+        country:
+          type: string
+          x-skaffolder-id-attr: 5f46e51a67541c707d179934
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+        name:
+          type: string
+          x-skaffolder-id-attr: 5f46e51a67541c707d179935
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+        schedule:
+          type: number
+          x-skaffolder-id-attr: 5f46e51a67541c707d179936
+          x-skaffolder-type: Number
+          x-skaffolder-required: true
+        state:
+          type: string
+          x-skaffolder-id-attr: 5f46e51a67541c707d179937
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+        street:
+          type: string
+          x-skaffolder-id-attr: 5f46e51a67541c707d179938
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+      x-skaffolder-relations:
+        _class:
+          x-skaffolder-id: 5f46e5eb67541c707d179959
+          x-skaffolder-type: 1:m
+          x-skaffolder-ent1: 5f46e51a67541c707d17992b
+          x-skaffolder-ent2: 5f46e59767541c707d179951
+        _teacher:
+          x-skaffolder-id: 5f46e5eb67541c707d17995a
+          x-skaffolder-type: m:m
+          x-skaffolder-ent1: 5f46e51a67541c707d17992b
+          x-skaffolder-ent2: 5f46e3f967541c707d17990c
+      required:
+        - _id
+        - city
+        - country
+        - name
+        - schedule
+        - state
+        - street
+    Countries:
+      x-skaffolder-id: 5f46e54267541c707d179944
+      x-skaffolder-id-db: 5f46db3167541c707d17987a
+      x-skaffolder-id-entity: 5f46e54267541c707d179942
+      x-skaffolder-url: /countries
+      properties:
+        _id:
+          type: string
+          x-skaffolder-required: true
+        name:
+          type: string
+          x-skaffolder-id-attr: 5f46e54267541c707d179943
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+      x-skaffolder-relations: 
+      required:
+        - _id
+        - name
+    Events:
+      x-skaffolder-id: 5f46e53567541c707d17993f
+      x-skaffolder-id-db: 5f46db3167541c707d17987a
+      x-skaffolder-id-entity: 5f46e53467541c707d17993c
+      x-skaffolder-url: /events
+      properties:
+        _id:
+          type: string
+          x-skaffolder-required: true
+        name:
+          type: string
+          x-skaffolder-id-attr: 5f46e53467541c707d17993d
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+        vacancies:
+          type: string
+          x-skaffolder-id-attr: 5f46e53467541c707d17993e
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+      x-skaffolder-relations:
+        _club:
+          x-skaffolder-id: 5f46e5b667541c707d179958
+          x-skaffolder-type: m:m
+          x-skaffolder-ent1: 5f46e53467541c707d17993c
+          x-skaffolder-ent2: 5f46e51a67541c707d17992b
+      required:
+        - _id
+        - name
+        - vacancies
+    States:
+      x-skaffolder-id: 5f46e55367541c707d179949
+      x-skaffolder-id-db: 5f46db3167541c707d17987a
+      x-skaffolder-id-entity: 5f46e55367541c707d179947
+      x-skaffolder-url: /states
+      properties:
+        _id:
+          type: string
+          x-skaffolder-required: true
+        name:
+          type: string
+          x-skaffolder-id-attr: 5f46e55367541c707d179948
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+      x-skaffolder-relations: 
+      required:
+        - _id
+        - name
+    Students:
+      x-skaffolder-id: 5f46e48867541c707d179924
+      x-skaffolder-id-db: 5f46db3167541c707d17987a
+      x-skaffolder-id-entity: 5f46e48767541c707d179919
+      x-skaffolder-url: /students
+      properties:
+        _id:
+          type: string
+          x-skaffolder-required: true
+        date_of_birth:
+          type: integer
+          x-skaffolder-id-attr: 5f46e48767541c707d17991a
+          x-skaffolder-type: Date
+          x-skaffolder-required: true
+        facebook:
+          type: string
+          x-skaffolder-id-attr: 5f46e48767541c707d17991b
+          x-skaffolder-type: String
+        instagram:
+          type: string
+          x-skaffolder-id-attr: 5f46e48767541c707d17991c
+          x-skaffolder-type: String
+        name:
+          type: string
+          x-skaffolder-id-attr: 5f46e48767541c707d17991d
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+        password:
+          type: string
+          x-skaffolder-id-attr: 5f46e48767541c707d17991e
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+        position_secundary:
+          type: number
+          x-skaffolder-id-attr: 5f46e48767541c707d179920
+          x-skaffolder-type: Number
+          x-skaffolder-required: true
+        position_usual:
+          type: number
+          x-skaffolder-id-attr: 5f46e48767541c707d17991f
+          x-skaffolder-type: Number
+          x-skaffolder-required: true
+        steer:
+          type: boolean
+          x-skaffolder-id-attr: 5f46e48767541c707d179921
+          x-skaffolder-type: Boolean
+          x-skaffolder-required: true
+        surname:
+          type: string
+          x-skaffolder-id-attr: 5f46e48767541c707d179922
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+        username:
+          type: string
+          x-skaffolder-id-attr: 5f46e48767541c707d179923
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+          x-skaffolder-unique: true
+      x-skaffolder-relations:
+        _class:
+          x-skaffolder-id: 5f46e60967541c707d17995b
+          x-skaffolder-type: m:m
+          x-skaffolder-ent1: 5f46e48767541c707d179919
+          x-skaffolder-ent2: 5f46e59767541c707d179951
+        _club:
+          x-skaffolder-id: 5f46e60967541c707d17995c
+          x-skaffolder-type: m:m
+          x-skaffolder-ent1: 5f46e48767541c707d179919
+          x-skaffolder-ent2: 5f46e51a67541c707d17992b
+      required:
+        - _id
+        - date_of_birth
+        - name
+        - password
+        - position_secundary
+        - position_usual
+        - steer
+        - surname
+        - username
+    Teachers:
+      x-skaffolder-id: 5f46e3fa67541c707d179914
+      x-skaffolder-id-db: 5f46db3167541c707d17987a
+      x-skaffolder-id-entity: 5f46e3f967541c707d17990c
+      x-skaffolder-url: /teachers
+      properties:
+        _id:
+          type: string
+          x-skaffolder-required: true
+        auth_classes_students:
+          type: boolean
+          x-skaffolder-id-attr: 5f46e3f967541c707d17990d
+          x-skaffolder-type: Boolean
+          x-skaffolder-required: true
+        date_of_birth:
+          type: integer
+          x-skaffolder-id-attr: 5f46e3f967541c707d17990e
+          x-skaffolder-type: Date
+          x-skaffolder-required: true
+        name:
+          type: string
+          x-skaffolder-id-attr: 5f46e3f967541c707d17990f
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+        partner:
+          type: boolean
+          x-skaffolder-id-attr: 5f46e3f967541c707d179910
+          x-skaffolder-type: Boolean
+          x-skaffolder-required: true
+        password:
+          type: string
+          x-skaffolder-id-attr: 5f46e3f967541c707d179911
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+        surname:
+          type: string
+          x-skaffolder-id-attr: 5f46e3f967541c707d179912
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+        username:
+          type: string
+          x-skaffolder-id-attr: 5f46e3f967541c707d179913
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+          x-skaffolder-unique: true
+      x-skaffolder-relations:
+        _class:
+          x-skaffolder-id: 5f46e62b67541c707d17995d
+          x-skaffolder-type: 1:m
+          x-skaffolder-ent1: 5f46e3f967541c707d17990c
+          x-skaffolder-ent2: 5f46e59767541c707d179951
+        _club:
+          x-skaffolder-id: 5f46e62b67541c707d17995e
+          x-skaffolder-type: m:m
+          x-skaffolder-ent1: 5f46e3f967541c707d17990c
+          x-skaffolder-ent2: 5f46e51a67541c707d17992b
+      required:
+        - _id
+        - auth_classes_students
+        - date_of_birth
+        - name
+        - partner
+        - password
+        - surname
+        - username
+    User:
+      x-skaffolder-id: 5f46db3267541c707d179883
+      x-skaffolder-id-db: 5f46db3167541c707d17987a
+      x-skaffolder-id-entity: 5f46db3267541c707d17987b
+      x-skaffolder-url: /user
+      x-skaffolder-type: User
+      properties:
+        _id:
+          type: string
+          x-skaffolder-required: true
+        mail:
+          type: string
+          x-skaffolder-id-attr: 5f46db3267541c707d17987e
+          x-skaffolder-type: String
+        name:
+          type: string
+          x-skaffolder-id-attr: 5f46db3267541c707d17987f
+          x-skaffolder-type: String
+        password:
+          type: string
+          x-skaffolder-id-attr: 5f46db3267541c707d17987d
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+        roles:
+          type: string
+          x-skaffolder-id-attr: 5f46db3267541c707d179881
+          x-skaffolder-type: String
+        surname:
+          type: string
+          x-skaffolder-id-attr: 5f46db3267541c707d179880
+          x-skaffolder-type: String
+        username:
+          type: string
+          x-skaffolder-id-attr: 5f46db3267541c707d17987c
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+      x-skaffolder-relations: 
+      required:
+        - _id
+        - password
+        - username
+  x-skaffolder-db:
+    - x-skaffolder-id: 5f46db3167541c707d17987a
+      x-skaffolder-name: appvaa_db
+  x-skaffolder-page:
+    - x-skaffolder-id: 5f46db3267541c707d179882
+      x-skaffolder-name: Home
+      x-skaffolder-url: /home
+      x-skaffolder-template: 
+      x-skaffolder-resource: 
+      x-skaffolder-services: 
+      x-skaffolder-nesteds: 
+      x-skaffolder-links: 
+      x-skaffolder-roles: []
+    - x-skaffolder-id: 5f46e67067541c707d179962
+      x-skaffolder-name: Students
+      x-skaffolder-url: /students
+      x-skaffolder-template: 
+      x-skaffolder-resource: 
+      x-skaffolder-services: 
+      x-skaffolder-nesteds: 
+      x-skaffolder-links: 
+      x-skaffolder-roles: []
+    - x-skaffolder-id: 5f46e66067541c707d179960
+      x-skaffolder-name: Teachers
+      x-skaffolder-url: /teacher
+      x-skaffolder-template: 
+      x-skaffolder-resource: 
+      x-skaffolder-services: 
+      x-skaffolder-nesteds: 
+      x-skaffolder-links: 
+      x-skaffolder-roles: []
+  x-skaffolder-roles: 
+    - x-skaffolder-id: 5f46db3267541c707d179885
+      x-skaffolder-name: ADMIN
