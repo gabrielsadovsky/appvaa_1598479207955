@@ -91,7 +91,79 @@ class Navbar extends React.Component {
         <Divider />
         <List>
           {/* START LINK MENU */}
- {/* END LINK MENU */}
+            
+           <Link to="/citieses">
+            <ListItem button key="Cities">
+              <ListItemIcon>
+                <ArrowForwardIos />
+              </ListItemIcon>
+              <ListItemText className="menu-text" primary="Cities" />
+            </ListItem>
+          </Link>{" "}            
+           <Link to="/classeses">
+            <ListItem button key="Classes">
+              <ListItemIcon>
+                <ArrowForwardIos />
+              </ListItemIcon>
+              <ListItemText className="menu-text" primary="Classes" />
+            </ListItem>
+          </Link>{" "}            
+           <Link to="/clubses">
+            <ListItem button key="Clubs">
+              <ListItemIcon>
+                <ArrowForwardIos />
+              </ListItemIcon>
+              <ListItemText className="menu-text" primary="Clubs" />
+            </ListItem>
+          </Link>{" "}            
+           <Link to="/countrieses">
+            <ListItem button key="Countries">
+              <ListItemIcon>
+                <ArrowForwardIos />
+              </ListItemIcon>
+              <ListItemText className="menu-text" primary="Countries" />
+            </ListItem>
+          </Link>{" "}            
+           <Link to="/eventses">
+            <ListItem button key="Events">
+              <ListItemIcon>
+                <ArrowForwardIos />
+              </ListItemIcon>
+              <ListItemText className="menu-text" primary="Events" />
+            </ListItem>
+          </Link>{" "}            
+           <Link to="/stateses">
+            <ListItem button key="States">
+              <ListItemIcon>
+                <ArrowForwardIos />
+              </ListItemIcon>
+              <ListItemText className="menu-text" primary="States" />
+            </ListItem>
+          </Link>{" "}            
+           <Link to="/studentses">
+            <ListItem button key="Students">
+              <ListItemIcon>
+                <ArrowForwardIos />
+              </ListItemIcon>
+              <ListItemText className="menu-text" primary="Students" />
+            </ListItem>
+          </Link>{" "}            
+           <Link to="/teacherses">
+            <ListItem button key="Teachers">
+              <ListItemIcon>
+                <ArrowForwardIos />
+              </ListItemIcon>
+              <ListItemText className="menu-text" primary="Teachers" />
+            </ListItem>
+          </Link>{" "}            
+           <Link to="/users">
+            <ListItem button key="User">
+              <ListItemIcon>
+                <ArrowForwardIos />
+              </ListItemIcon>
+              <ListItemText className="menu-text" primary="User" />
+            </ListItem>
+          </Link>{" "} {/* END LINK MENU */}
         </List>
       </div>
     );

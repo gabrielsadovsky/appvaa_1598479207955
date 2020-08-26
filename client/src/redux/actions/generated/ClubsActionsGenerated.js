@@ -23,6 +23,138 @@ let actionsFunction = {
 
   //CRUD METHODS
 
+  // Create clubs
+  createClubs: function(clubs) {
+    return function(dispatch) {
+      return ClubsApi
+        .createClubs(clubs)
+        .then(clubs => {
+          dispatch(actionsFunction.createClubsSuccess(clubs));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  createClubsSuccess: function(clubs) {
+    return { type: types.CREATE_CLUBS_SUCCESS, payload: clubs };
+  },
+
+
+  // Delete clubs
+  deleteClubs: function(id) {
+    return function(dispatch) {
+      return ClubsApi
+        .deleteClubs(id)
+        .then(clubs => {
+          dispatch(actionsFunction.deleteClubsSuccess(clubs));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  deleteClubsSuccess: function(clubs) {
+    return { type: types.DELETE_CLUBS_SUCCESS, payload: clubs };
+  },
+
+
+  // Find by _class
+  findBy_class: function(key) {
+    return function(dispatch) {
+      return ClubsApi
+        .findBy_class(key)
+        .then(item => {
+          dispatch(actionsFunction.findBy_classSuccess(item));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  findBy_classSuccess: function(item) {
+    return { type: types.FINDBY_CLASS_CLUBS_SUCCESS, payload: item };
+  },
+
+
+  // Find by _teacher
+  findBy_teacher: function(key) {
+    return function(dispatch) {
+      return ClubsApi
+        .findBy_teacher(key)
+        .then(item => {
+          dispatch(actionsFunction.findBy_teacherSuccess(item));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  findBy_teacherSuccess: function(item) {
+    return { type: types.FINDBY_TEACHER_CLUBS_SUCCESS, payload: item };
+  },
+
+
+  // Get clubs
+  loadClubs: function(id) {
+    return function(dispatch) {
+      return ClubsApi
+        .getOneClubs(id)
+        .then(clubs => {
+          dispatch(actionsFunction.loadClubsSuccess(clubs));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  loadClubsSuccess: function(clubs) {
+    return { type: types.GET_CLUBS_SUCCESS, payload: clubs };
+  },
+
+  // Load  list
+  loadClubsList: function() {
+    return function(dispatch) {
+      return ClubsApi
+        .getClubsList()
+        .then(list => {
+          dispatch(actionsFunction.loadClubsListSuccess(list));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  loadClubsListSuccess: function(list) {
+    return { type: types.LIST_CLUBS_SUCCESS, payload: list };
+  },
+
+	
+  // Save clubs
+  saveClubs: function(clubs) {
+    return function(dispatch) {
+      return ClubsApi
+        .saveClubs(clubs)
+        .then(clubs => {
+          dispatch(actionsFunction.saveClubsSuccess(clubs));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  saveClubsSuccess: function(clubs) {
+    return { type: types.UPDATE_CLUBS_SUCCESS, payload: clubs };
+  },
+
+
 };
 
 export default actionsFunction;

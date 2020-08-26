@@ -27,12 +27,130 @@ const generatedControllers = {
    */
   init: router => {
     const baseUrl = `${Properties.api}/students`;
+    router.post(baseUrl + "", authorize([]), StudentsController.create);
+    router.delete(baseUrl + "/:id", authorize([]), StudentsController.delete);
+    router.get(baseUrl + "/findBy_class/:key", authorize([]), StudentsController.findBy_class);
+    router.get(baseUrl + "/findBy_club/:key", authorize([]), StudentsController.findBy_club);
+    router.get(baseUrl + "/:id", authorize([]), StudentsController.get);
+    router.get(baseUrl + "", authorize([]), StudentsController.list);
+    router.post(baseUrl + "/:id", authorize([]), StudentsController.update);
   },
 
 
   // CRUD METHODS
 
 
+  /**
+  * StudentsModel.create
+  *   @description CRUD ACTION create
+  *
+  */
+  create: async (req, res) => {
+    try {
+      const result = await StudentsModel.create(req.body);
+      res.json(result);
+    } catch (err) {
+      const safeErr = ErrorManager.getSafeError(err);
+      res.status(safeErr.status).json(safeErr);
+    }
+  },
+  
+  /**
+  * StudentsModel.delete
+  *   @description CRUD ACTION delete
+  *   @param ObjectId id Id
+  *
+  */
+  delete: async (req, res) => {
+    try {
+      const result = await StudentsModel.delete(req.params.id);
+      res.json(result);
+    } catch (err) {
+      const safeErr = ErrorManager.getSafeError(err);
+      res.status(safeErr.status).json(safeErr);
+    }
+  },
+  
+  /**
+  * StudentsModel.findBy_class
+  *   @description CRUD ACTION findBy_class
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  findBy_class: async (req, res) => {
+    try {
+      const result = await StudentsModel.findBy_class(req.params.key);
+      res.json(result);
+    } catch (err) {
+      const safeErr = ErrorManager.getSafeError(err);
+      res.status(safeErr.status).json(safeErr);
+    }
+  },
+  
+  /**
+  * StudentsModel.findBy_club
+  *   @description CRUD ACTION findBy_club
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  findBy_club: async (req, res) => {
+    try {
+      const result = await StudentsModel.findBy_club(req.params.key);
+      res.json(result);
+    } catch (err) {
+      const safeErr = ErrorManager.getSafeError(err);
+      res.status(safeErr.status).json(safeErr);
+    }
+  },
+  
+  /**
+  * StudentsModel.get
+  *   @description CRUD ACTION get
+  *   @param ObjectId id Id resource
+  *
+  */
+  get: async (req, res) => {
+    try {
+      const result = await StudentsModel.get(req.params.id);
+      res.json(result);
+    } catch (err) {
+      const safeErr = ErrorManager.getSafeError(err);
+      res.status(safeErr.status).json(safeErr);
+    }
+  },
+  
+  /**
+  * StudentsModel.list
+  *   @description CRUD ACTION list
+  *
+  */
+  list: async (req, res) => {
+    try {
+      const result = await StudentsModel.list();
+      res.json(result);
+    } catch (err) {
+      const safeErr = ErrorManager.getSafeError(err);
+      res.status(safeErr.status).json(safeErr);
+    }
+  },
+  
+  
+  /**
+  * StudentsModel.update
+  *   @description CRUD ACTION update
+  *   @param ObjectId id Id
+  *
+  */
+  update: async (req, res) => {
+    try {
+      const result = await StudentsModel.update(req.body);
+      res.json(result);
+    } catch (err) {
+      const safeErr = ErrorManager.getSafeError(err);
+      res.status(safeErr.status).json(safeErr);
+    }
+  },
+  
   
   // Custom APIs
 

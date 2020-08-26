@@ -23,6 +23,138 @@ let actionsFunction = {
 
   //CRUD METHODS
 
+  // Create students
+  createStudents: function(students) {
+    return function(dispatch) {
+      return StudentsApi
+        .createStudents(students)
+        .then(students => {
+          dispatch(actionsFunction.createStudentsSuccess(students));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  createStudentsSuccess: function(students) {
+    return { type: types.CREATE_STUDENTS_SUCCESS, payload: students };
+  },
+
+
+  // Delete students
+  deleteStudents: function(id) {
+    return function(dispatch) {
+      return StudentsApi
+        .deleteStudents(id)
+        .then(students => {
+          dispatch(actionsFunction.deleteStudentsSuccess(students));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  deleteStudentsSuccess: function(students) {
+    return { type: types.DELETE_STUDENTS_SUCCESS, payload: students };
+  },
+
+
+  // Find by _class
+  findBy_class: function(key) {
+    return function(dispatch) {
+      return StudentsApi
+        .findBy_class(key)
+        .then(item => {
+          dispatch(actionsFunction.findBy_classSuccess(item));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  findBy_classSuccess: function(item) {
+    return { type: types.FINDBY_CLASS_STUDENTS_SUCCESS, payload: item };
+  },
+
+
+  // Find by _club
+  findBy_club: function(key) {
+    return function(dispatch) {
+      return StudentsApi
+        .findBy_club(key)
+        .then(item => {
+          dispatch(actionsFunction.findBy_clubSuccess(item));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  findBy_clubSuccess: function(item) {
+    return { type: types.FINDBY_CLUB_STUDENTS_SUCCESS, payload: item };
+  },
+
+
+  // Get students
+  loadStudents: function(id) {
+    return function(dispatch) {
+      return StudentsApi
+        .getOneStudents(id)
+        .then(students => {
+          dispatch(actionsFunction.loadStudentsSuccess(students));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  loadStudentsSuccess: function(students) {
+    return { type: types.GET_STUDENTS_SUCCESS, payload: students };
+  },
+
+  // Load  list
+  loadStudentsList: function() {
+    return function(dispatch) {
+      return StudentsApi
+        .getStudentsList()
+        .then(list => {
+          dispatch(actionsFunction.loadStudentsListSuccess(list));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  loadStudentsListSuccess: function(list) {
+    return { type: types.LIST_STUDENTS_SUCCESS, payload: list };
+  },
+
+	
+  // Save students
+  saveStudents: function(students) {
+    return function(dispatch) {
+      return StudentsApi
+        .saveStudents(students)
+        .then(students => {
+          dispatch(actionsFunction.saveStudentsSuccess(students));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  saveStudentsSuccess: function(students) {
+    return { type: types.UPDATE_STUDENTS_SUCCESS, payload: students };
+  },
+
+
 };
 
 export default actionsFunction;

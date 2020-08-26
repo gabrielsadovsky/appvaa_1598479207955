@@ -27,12 +27,113 @@ const generatedControllers = {
    */
   init: router => {
     const baseUrl = `${Properties.api}/events`;
+    router.post(baseUrl + "", authorize([]), EventsController.create);
+    router.delete(baseUrl + "/:id", authorize([]), EventsController.delete);
+    router.get(baseUrl + "/findBy_club/:key", authorize([]), EventsController.findBy_club);
+    router.get(baseUrl + "/:id", authorize([]), EventsController.get);
+    router.get(baseUrl + "", authorize([]), EventsController.list);
+    router.post(baseUrl + "/:id", authorize([]), EventsController.update);
   },
 
 
   // CRUD METHODS
 
 
+  /**
+  * EventsModel.create
+  *   @description CRUD ACTION create
+  *
+  */
+  create: async (req, res) => {
+    try {
+      const result = await EventsModel.create(req.body);
+      res.json(result);
+    } catch (err) {
+      const safeErr = ErrorManager.getSafeError(err);
+      res.status(safeErr.status).json(safeErr);
+    }
+  },
+  
+  /**
+  * EventsModel.delete
+  *   @description CRUD ACTION delete
+  *   @param ObjectId id Id
+  *
+  */
+  delete: async (req, res) => {
+    try {
+      const result = await EventsModel.delete(req.params.id);
+      res.json(result);
+    } catch (err) {
+      const safeErr = ErrorManager.getSafeError(err);
+      res.status(safeErr.status).json(safeErr);
+    }
+  },
+  
+  /**
+  * EventsModel.findBy_club
+  *   @description CRUD ACTION findBy_club
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  findBy_club: async (req, res) => {
+    try {
+      const result = await EventsModel.findBy_club(req.params.key);
+      res.json(result);
+    } catch (err) {
+      const safeErr = ErrorManager.getSafeError(err);
+      res.status(safeErr.status).json(safeErr);
+    }
+  },
+  
+  /**
+  * EventsModel.get
+  *   @description CRUD ACTION get
+  *   @param ObjectId id Id resource
+  *
+  */
+  get: async (req, res) => {
+    try {
+      const result = await EventsModel.get(req.params.id);
+      res.json(result);
+    } catch (err) {
+      const safeErr = ErrorManager.getSafeError(err);
+      res.status(safeErr.status).json(safeErr);
+    }
+  },
+  
+  /**
+  * EventsModel.list
+  *   @description CRUD ACTION list
+  *
+  */
+  list: async (req, res) => {
+    try {
+      const result = await EventsModel.list();
+      res.json(result);
+    } catch (err) {
+      const safeErr = ErrorManager.getSafeError(err);
+      res.status(safeErr.status).json(safeErr);
+    }
+  },
+  
+  
+  /**
+  * EventsModel.update
+  *   @description CRUD ACTION update
+  *   @param ObjectId id Id
+  *
+  */
+  update: async (req, res) => {
+    try {
+      const result = await EventsModel.update(req.body);
+      res.json(result);
+    } catch (err) {
+      const safeErr = ErrorManager.getSafeError(err);
+      res.status(safeErr.status).json(safeErr);
+    }
+  },
+  
   
   // Custom APIs
 

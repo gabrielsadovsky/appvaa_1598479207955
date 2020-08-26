@@ -23,6 +23,100 @@ let actionsFunction = {
 
   //CRUD METHODS
 
+  // Create cities
+  createCities: function(cities) {
+    return function(dispatch) {
+      return CitiesApi
+        .createCities(cities)
+        .then(cities => {
+          dispatch(actionsFunction.createCitiesSuccess(cities));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  createCitiesSuccess: function(cities) {
+    return { type: types.CREATE_CITIES_SUCCESS, payload: cities };
+  },
+
+
+  // Delete cities
+  deleteCities: function(id) {
+    return function(dispatch) {
+      return CitiesApi
+        .deleteCities(id)
+        .then(cities => {
+          dispatch(actionsFunction.deleteCitiesSuccess(cities));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  deleteCitiesSuccess: function(cities) {
+    return { type: types.DELETE_CITIES_SUCCESS, payload: cities };
+  },
+
+
+  // Get cities
+  loadCities: function(id) {
+    return function(dispatch) {
+      return CitiesApi
+        .getOneCities(id)
+        .then(cities => {
+          dispatch(actionsFunction.loadCitiesSuccess(cities));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  loadCitiesSuccess: function(cities) {
+    return { type: types.GET_CITIES_SUCCESS, payload: cities };
+  },
+
+  // Load  list
+  loadCitiesList: function() {
+    return function(dispatch) {
+      return CitiesApi
+        .getCitiesList()
+        .then(list => {
+          dispatch(actionsFunction.loadCitiesListSuccess(list));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  loadCitiesListSuccess: function(list) {
+    return { type: types.LIST_CITIES_SUCCESS, payload: list };
+  },
+
+	
+  // Save cities
+  saveCities: function(cities) {
+    return function(dispatch) {
+      return CitiesApi
+        .saveCities(cities)
+        .then(cities => {
+          dispatch(actionsFunction.saveCitiesSuccess(cities));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  saveCitiesSuccess: function(cities) {
+    return { type: types.UPDATE_CITIES_SUCCESS, payload: cities };
+  },
+
+
 };
 
 export default actionsFunction;

@@ -23,6 +23,119 @@ let actionsFunction = {
 
   //CRUD METHODS
 
+  // Create events
+  createEvents: function(events) {
+    return function(dispatch) {
+      return EventsApi
+        .createEvents(events)
+        .then(events => {
+          dispatch(actionsFunction.createEventsSuccess(events));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  createEventsSuccess: function(events) {
+    return { type: types.CREATE_EVENTS_SUCCESS, payload: events };
+  },
+
+
+  // Delete events
+  deleteEvents: function(id) {
+    return function(dispatch) {
+      return EventsApi
+        .deleteEvents(id)
+        .then(events => {
+          dispatch(actionsFunction.deleteEventsSuccess(events));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  deleteEventsSuccess: function(events) {
+    return { type: types.DELETE_EVENTS_SUCCESS, payload: events };
+  },
+
+
+  // Find by _club
+  findBy_club: function(key) {
+    return function(dispatch) {
+      return EventsApi
+        .findBy_club(key)
+        .then(item => {
+          dispatch(actionsFunction.findBy_clubSuccess(item));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  findBy_clubSuccess: function(item) {
+    return { type: types.FINDBY_CLUB_EVENTS_SUCCESS, payload: item };
+  },
+
+
+  // Get events
+  loadEvents: function(id) {
+    return function(dispatch) {
+      return EventsApi
+        .getOneEvents(id)
+        .then(events => {
+          dispatch(actionsFunction.loadEventsSuccess(events));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  loadEventsSuccess: function(events) {
+    return { type: types.GET_EVENTS_SUCCESS, payload: events };
+  },
+
+  // Load  list
+  loadEventsList: function() {
+    return function(dispatch) {
+      return EventsApi
+        .getEventsList()
+        .then(list => {
+          dispatch(actionsFunction.loadEventsListSuccess(list));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  loadEventsListSuccess: function(list) {
+    return { type: types.LIST_EVENTS_SUCCESS, payload: list };
+  },
+
+	
+  // Save events
+  saveEvents: function(events) {
+    return function(dispatch) {
+      return EventsApi
+        .saveEvents(events)
+        .then(events => {
+          dispatch(actionsFunction.saveEventsSuccess(events));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  saveEventsSuccess: function(events) {
+    return { type: types.UPDATE_EVENTS_SUCCESS, payload: events };
+  },
+
+
 };
 
 export default actionsFunction;

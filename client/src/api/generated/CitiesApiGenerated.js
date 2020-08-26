@@ -26,6 +26,84 @@ class CitiesApiGenerated {
 
   // CRUD METHODS
 
+  /**
+  * CitiesService.create
+  *   @description CRUD ACTION create
+  *
+  */
+  static createCities(cities) {
+    return axios.post(CitiesApiGenerated.contextUrl, cities )
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * CitiesService.delete
+  *   @description CRUD ACTION delete
+  *   @param ObjectId id Id
+  *
+  */
+  static deleteCities(id) {
+    return axios.delete(CitiesApiGenerated.contextUrl + "/" + id)
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * CitiesService.get
+  *   @description CRUD ACTION get
+  *   @param ObjectId id Id resource
+  *
+  */
+  static getOneCities(id) {
+    return axios.get(CitiesApiGenerated.contextUrl + "/" + id)
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * CitiesService.list
+  *   @description CRUD ACTION list
+  *
+  */
+  static getCitiesList() {
+    return axios.get(CitiesApiGenerated.contextUrl)
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * CitiesService.update
+  *   @description CRUD ACTION update
+  *   @param ObjectId id Id
+  *
+  */
+  static saveCities(cities) {
+    return axios.post(CitiesApiGenerated.contextUrl + "/" + cities._id, cities )
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
 
 
     // Custom APIs

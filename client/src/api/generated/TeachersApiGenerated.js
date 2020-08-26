@@ -26,6 +26,116 @@ class TeachersApiGenerated {
 
   // CRUD METHODS
 
+  /**
+  * TeachersService.create
+  *   @description CRUD ACTION create
+  *
+  */
+  static createTeachers(teachers) {
+    return axios.post(TeachersApiGenerated.contextUrl, teachers )
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * TeachersService.delete
+  *   @description CRUD ACTION delete
+  *   @param ObjectId id Id
+  *
+  */
+  static deleteTeachers(id) {
+    return axios.delete(TeachersApiGenerated.contextUrl + "/" + id)
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * TeachersService.findBy_class
+  *   @description CRUD ACTION findBy_class
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  static findBy_class(id) {
+    return axios.get(TeachersApiGenerated.contextUrl + "/findBy_class/" + id )
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * TeachersService.findBy_club
+  *   @description CRUD ACTION findBy_club
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  static findBy_club(id) {
+    return axios.get(TeachersApiGenerated.contextUrl + "/findBy_club/" + id )
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * TeachersService.get
+  *   @description CRUD ACTION get
+  *   @param ObjectId id Id resource
+  *
+  */
+  static getOneTeachers(id) {
+    return axios.get(TeachersApiGenerated.contextUrl + "/" + id)
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * TeachersService.list
+  *   @description CRUD ACTION list
+  *
+  */
+  static getTeachersList() {
+    return axios.get(TeachersApiGenerated.contextUrl)
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * TeachersService.update
+  *   @description CRUD ACTION update
+  *   @param ObjectId id Id
+  *
+  */
+  static saveTeachers(teachers) {
+    return axios.post(TeachersApiGenerated.contextUrl + "/" + teachers._id, teachers )
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
 
 
     // Custom APIs

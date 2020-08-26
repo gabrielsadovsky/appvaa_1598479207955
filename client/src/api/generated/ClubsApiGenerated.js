@@ -26,6 +26,116 @@ class ClubsApiGenerated {
 
   // CRUD METHODS
 
+  /**
+  * ClubsService.create
+  *   @description CRUD ACTION create
+  *
+  */
+  static createClubs(clubs) {
+    return axios.post(ClubsApiGenerated.contextUrl, clubs )
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * ClubsService.delete
+  *   @description CRUD ACTION delete
+  *   @param ObjectId id Id
+  *
+  */
+  static deleteClubs(id) {
+    return axios.delete(ClubsApiGenerated.contextUrl + "/" + id)
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * ClubsService.findBy_class
+  *   @description CRUD ACTION findBy_class
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  static findBy_class(id) {
+    return axios.get(ClubsApiGenerated.contextUrl + "/findBy_class/" + id )
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * ClubsService.findBy_teacher
+  *   @description CRUD ACTION findBy_teacher
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  static findBy_teacher(id) {
+    return axios.get(ClubsApiGenerated.contextUrl + "/findBy_teacher/" + id )
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * ClubsService.get
+  *   @description CRUD ACTION get
+  *   @param ObjectId id Id resource
+  *
+  */
+  static getOneClubs(id) {
+    return axios.get(ClubsApiGenerated.contextUrl + "/" + id)
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * ClubsService.list
+  *   @description CRUD ACTION list
+  *
+  */
+  static getClubsList() {
+    return axios.get(ClubsApiGenerated.contextUrl)
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * ClubsService.update
+  *   @description CRUD ACTION update
+  *   @param ObjectId id Id
+  *
+  */
+  static saveClubs(clubs) {
+    return axios.post(ClubsApiGenerated.contextUrl + "/" + clubs._id, clubs )
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
 
 
     // Custom APIs

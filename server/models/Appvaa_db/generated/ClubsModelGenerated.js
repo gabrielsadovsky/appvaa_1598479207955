@@ -139,6 +139,75 @@ const generatedModel = {
   // CRUD METHODS
 
 
+  /**
+  * ClubsModel.create
+  *   @description CRUD ACTION create
+  *
+  */
+  async create(item) {
+    const obj = new generatedModel.model(item);
+    return await obj.save();
+  },
+  
+  /**
+  * ClubsModel.delete
+  *   @description CRUD ACTION delete
+  *   @param ObjectId id Id
+  *
+  */
+  async delete(id) {
+    return await generatedModel.model.findByIdAndRemove(id);
+  },
+  
+  /**
+  * ClubsModel.findBy_class
+  *   @description CRUD ACTION findBy_class
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  async findBy_class(key) {
+    return await generatedModel.model.find({ '_class' : key});
+  },
+  
+  /**
+  * ClubsModel.findBy_teacher
+  *   @description CRUD ACTION findBy_teacher
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  async findBy_teacher(key) {
+    return await generatedModel.model.find({ '_teacher' : key});
+  },
+  
+  /**
+  * ClubsModel.get
+  *   @description CRUD ACTION get
+  *   @param ObjectId id Id resource
+  *
+  */
+  async get(id) {
+    return await generatedModel.model.findOne({ _id : id });
+  },
+  
+  /**
+  * ClubsModel.list
+  *   @description CRUD ACTION list
+  *
+  */
+  async list() {
+    return await generatedModel.model.find();
+  },
+  
+  /**
+  * ClubsModel.update
+  *   @description CRUD ACTION update
+  *   @param ObjectId id Id
+  *
+  */
+  async update(item) { 
+    return await generatedModel.model.findOneAndUpdate({ _id: item._id }, item, {'new': true});
+  },
+  
 
 
 };

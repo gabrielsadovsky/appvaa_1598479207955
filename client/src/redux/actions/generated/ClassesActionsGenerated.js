@@ -23,6 +23,138 @@ let actionsFunction = {
 
   //CRUD METHODS
 
+  // Create classes
+  createClasses: function(classes) {
+    return function(dispatch) {
+      return ClassesApi
+        .createClasses(classes)
+        .then(classes => {
+          dispatch(actionsFunction.createClassesSuccess(classes));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  createClassesSuccess: function(classes) {
+    return { type: types.CREATE_CLASSES_SUCCESS, payload: classes };
+  },
+
+
+  // Delete classes
+  deleteClasses: function(id) {
+    return function(dispatch) {
+      return ClassesApi
+        .deleteClasses(id)
+        .then(classes => {
+          dispatch(actionsFunction.deleteClassesSuccess(classes));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  deleteClassesSuccess: function(classes) {
+    return { type: types.DELETE_CLASSES_SUCCESS, payload: classes };
+  },
+
+
+  // Find by _club
+  findBy_club: function(key) {
+    return function(dispatch) {
+      return ClassesApi
+        .findBy_club(key)
+        .then(item => {
+          dispatch(actionsFunction.findBy_clubSuccess(item));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  findBy_clubSuccess: function(item) {
+    return { type: types.FINDBY_CLUB_CLASSES_SUCCESS, payload: item };
+  },
+
+
+  // Find by _student
+  findBy_student: function(key) {
+    return function(dispatch) {
+      return ClassesApi
+        .findBy_student(key)
+        .then(item => {
+          dispatch(actionsFunction.findBy_studentSuccess(item));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  findBy_studentSuccess: function(item) {
+    return { type: types.FINDBY_STUDENT_CLASSES_SUCCESS, payload: item };
+  },
+
+
+  // Get classes
+  loadClasses: function(id) {
+    return function(dispatch) {
+      return ClassesApi
+        .getOneClasses(id)
+        .then(classes => {
+          dispatch(actionsFunction.loadClassesSuccess(classes));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  loadClassesSuccess: function(classes) {
+    return { type: types.GET_CLASSES_SUCCESS, payload: classes };
+  },
+
+  // Load  list
+  loadClassesList: function() {
+    return function(dispatch) {
+      return ClassesApi
+        .getClassesList()
+        .then(list => {
+          dispatch(actionsFunction.loadClassesListSuccess(list));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  loadClassesListSuccess: function(list) {
+    return { type: types.LIST_CLASSES_SUCCESS, payload: list };
+  },
+
+	
+  // Save classes
+  saveClasses: function(classes) {
+    return function(dispatch) {
+      return ClassesApi
+        .saveClasses(classes)
+        .then(classes => {
+          dispatch(actionsFunction.saveClassesSuccess(classes));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  saveClassesSuccess: function(classes) {
+    return { type: types.UPDATE_CLASSES_SUCCESS, payload: classes };
+  },
+
+
 };
 
 export default actionsFunction;

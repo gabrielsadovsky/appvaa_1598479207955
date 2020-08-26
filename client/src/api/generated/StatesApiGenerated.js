@@ -26,6 +26,84 @@ class StatesApiGenerated {
 
   // CRUD METHODS
 
+  /**
+  * StatesService.create
+  *   @description CRUD ACTION create
+  *
+  */
+  static createStates(states) {
+    return axios.post(StatesApiGenerated.contextUrl, states )
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * StatesService.delete
+  *   @description CRUD ACTION delete
+  *   @param ObjectId id Id
+  *
+  */
+  static deleteStates(id) {
+    return axios.delete(StatesApiGenerated.contextUrl + "/" + id)
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * StatesService.get
+  *   @description CRUD ACTION get
+  *   @param ObjectId id Id resource
+  *
+  */
+  static getOneStates(id) {
+    return axios.get(StatesApiGenerated.contextUrl + "/" + id)
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * StatesService.list
+  *   @description CRUD ACTION list
+  *
+  */
+  static getStatesList() {
+    return axios.get(StatesApiGenerated.contextUrl)
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * StatesService.update
+  *   @description CRUD ACTION update
+  *   @param ObjectId id Id
+  *
+  */
+  static saveStates(states) {
+    return axios.post(StatesApiGenerated.contextUrl + "/" + states._id, states )
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
 
 
     // Custom APIs

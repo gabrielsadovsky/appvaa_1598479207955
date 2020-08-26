@@ -22,11 +22,11 @@ import EnhancedTable from "../components/EnhancedTable";
 
 /** APIs
 
-* UserService.delete
+* actionsUser.delete
 *	@description CRUD ACTION delete
 *	@param ObjectId id - Id
 *
-* UserService.list
+* actionsUser.list
 *	@description CRUD ACTION list
 *
 

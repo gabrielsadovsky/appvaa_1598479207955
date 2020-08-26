@@ -23,6 +23,100 @@ let actionsFunction = {
 
   //CRUD METHODS
 
+  // Create states
+  createStates: function(states) {
+    return function(dispatch) {
+      return StatesApi
+        .createStates(states)
+        .then(states => {
+          dispatch(actionsFunction.createStatesSuccess(states));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  createStatesSuccess: function(states) {
+    return { type: types.CREATE_STATES_SUCCESS, payload: states };
+  },
+
+
+  // Delete states
+  deleteStates: function(id) {
+    return function(dispatch) {
+      return StatesApi
+        .deleteStates(id)
+        .then(states => {
+          dispatch(actionsFunction.deleteStatesSuccess(states));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  deleteStatesSuccess: function(states) {
+    return { type: types.DELETE_STATES_SUCCESS, payload: states };
+  },
+
+
+  // Get states
+  loadStates: function(id) {
+    return function(dispatch) {
+      return StatesApi
+        .getOneStates(id)
+        .then(states => {
+          dispatch(actionsFunction.loadStatesSuccess(states));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  loadStatesSuccess: function(states) {
+    return { type: types.GET_STATES_SUCCESS, payload: states };
+  },
+
+  // Load  list
+  loadStatesList: function() {
+    return function(dispatch) {
+      return StatesApi
+        .getStatesList()
+        .then(list => {
+          dispatch(actionsFunction.loadStatesListSuccess(list));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  loadStatesListSuccess: function(list) {
+    return { type: types.LIST_STATES_SUCCESS, payload: list };
+  },
+
+	
+  // Save states
+  saveStates: function(states) {
+    return function(dispatch) {
+      return StatesApi
+        .saveStates(states)
+        .then(states => {
+          dispatch(actionsFunction.saveStatesSuccess(states));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  saveStatesSuccess: function(states) {
+    return { type: types.UPDATE_STATES_SUCCESS, payload: states };
+  },
+
+
 };
 
 export default actionsFunction;

@@ -26,6 +26,116 @@ class StudentsApiGenerated {
 
   // CRUD METHODS
 
+  /**
+  * StudentsService.create
+  *   @description CRUD ACTION create
+  *
+  */
+  static createStudents(students) {
+    return axios.post(StudentsApiGenerated.contextUrl, students )
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * StudentsService.delete
+  *   @description CRUD ACTION delete
+  *   @param ObjectId id Id
+  *
+  */
+  static deleteStudents(id) {
+    return axios.delete(StudentsApiGenerated.contextUrl + "/" + id)
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * StudentsService.findBy_class
+  *   @description CRUD ACTION findBy_class
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  static findBy_class(id) {
+    return axios.get(StudentsApiGenerated.contextUrl + "/findBy_class/" + id )
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * StudentsService.findBy_club
+  *   @description CRUD ACTION findBy_club
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  static findBy_club(id) {
+    return axios.get(StudentsApiGenerated.contextUrl + "/findBy_club/" + id )
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * StudentsService.get
+  *   @description CRUD ACTION get
+  *   @param ObjectId id Id resource
+  *
+  */
+  static getOneStudents(id) {
+    return axios.get(StudentsApiGenerated.contextUrl + "/" + id)
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * StudentsService.list
+  *   @description CRUD ACTION list
+  *
+  */
+  static getStudentsList() {
+    return axios.get(StudentsApiGenerated.contextUrl)
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * StudentsService.update
+  *   @description CRUD ACTION update
+  *   @param ObjectId id Id
+  *
+  */
+  static saveStudents(students) {
+    return axios.post(StudentsApiGenerated.contextUrl + "/" + students._id, students )
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
 
 
     // Custom APIs

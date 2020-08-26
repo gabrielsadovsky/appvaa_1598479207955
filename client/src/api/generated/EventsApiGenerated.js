@@ -26,6 +26,100 @@ class EventsApiGenerated {
 
   // CRUD METHODS
 
+  /**
+  * EventsService.create
+  *   @description CRUD ACTION create
+  *
+  */
+  static createEvents(events) {
+    return axios.post(EventsApiGenerated.contextUrl, events )
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * EventsService.delete
+  *   @description CRUD ACTION delete
+  *   @param ObjectId id Id
+  *
+  */
+  static deleteEvents(id) {
+    return axios.delete(EventsApiGenerated.contextUrl + "/" + id)
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * EventsService.findBy_club
+  *   @description CRUD ACTION findBy_club
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  static findBy_club(id) {
+    return axios.get(EventsApiGenerated.contextUrl + "/findBy_club/" + id )
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * EventsService.get
+  *   @description CRUD ACTION get
+  *   @param ObjectId id Id resource
+  *
+  */
+  static getOneEvents(id) {
+    return axios.get(EventsApiGenerated.contextUrl + "/" + id)
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * EventsService.list
+  *   @description CRUD ACTION list
+  *
+  */
+  static getEventsList() {
+    return axios.get(EventsApiGenerated.contextUrl)
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * EventsService.update
+  *   @description CRUD ACTION update
+  *   @param ObjectId id Id
+  *
+  */
+  static saveEvents(events) {
+    return axios.post(EventsApiGenerated.contextUrl + "/" + events._id, events )
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
 
 
     // Custom APIs

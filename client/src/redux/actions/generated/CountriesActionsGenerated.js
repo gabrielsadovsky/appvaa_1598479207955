@@ -23,6 +23,100 @@ let actionsFunction = {
 
   //CRUD METHODS
 
+  // Create countries
+  createCountries: function(countries) {
+    return function(dispatch) {
+      return CountriesApi
+        .createCountries(countries)
+        .then(countries => {
+          dispatch(actionsFunction.createCountriesSuccess(countries));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  createCountriesSuccess: function(countries) {
+    return { type: types.CREATE_COUNTRIES_SUCCESS, payload: countries };
+  },
+
+
+  // Delete countries
+  deleteCountries: function(id) {
+    return function(dispatch) {
+      return CountriesApi
+        .deleteCountries(id)
+        .then(countries => {
+          dispatch(actionsFunction.deleteCountriesSuccess(countries));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  deleteCountriesSuccess: function(countries) {
+    return { type: types.DELETE_COUNTRIES_SUCCESS, payload: countries };
+  },
+
+
+  // Get countries
+  loadCountries: function(id) {
+    return function(dispatch) {
+      return CountriesApi
+        .getOneCountries(id)
+        .then(countries => {
+          dispatch(actionsFunction.loadCountriesSuccess(countries));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  loadCountriesSuccess: function(countries) {
+    return { type: types.GET_COUNTRIES_SUCCESS, payload: countries };
+  },
+
+  // Load  list
+  loadCountriesList: function() {
+    return function(dispatch) {
+      return CountriesApi
+        .getCountriesList()
+        .then(list => {
+          dispatch(actionsFunction.loadCountriesListSuccess(list));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  loadCountriesListSuccess: function(list) {
+    return { type: types.LIST_COUNTRIES_SUCCESS, payload: list };
+  },
+
+	
+  // Save countries
+  saveCountries: function(countries) {
+    return function(dispatch) {
+      return CountriesApi
+        .saveCountries(countries)
+        .then(countries => {
+          dispatch(actionsFunction.saveCountriesSuccess(countries));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  saveCountriesSuccess: function(countries) {
+    return { type: types.UPDATE_COUNTRIES_SUCCESS, payload: countries };
+  },
+
+
 };
 
 export default actionsFunction;

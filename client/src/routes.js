@@ -9,8 +9,24 @@ import Paper from "@material-ui/core/Paper";
 
 /* START MY VIEWS IMPORT */
 
-import Students from "./pages/Students";
-import Teachers from "./pages/Teachers";
+import CitiesEdit from "./pages/CitiesEdit";
+import CitiesList from "./pages/CitiesList";
+import ClassesEdit from "./pages/ClassesEdit";
+import ClassesList from "./pages/ClassesList";
+import ClubsEdit from "./pages/ClubsEdit";
+import ClubsList from "./pages/ClubsList";
+import CountriesEdit from "./pages/CountriesEdit";
+import CountriesList from "./pages/CountriesList";
+import EventsEdit from "./pages/EventsEdit";
+import EventsList from "./pages/EventsList";
+import StatesEdit from "./pages/StatesEdit";
+import StatesList from "./pages/StatesList";
+import StudentsEdit from "./pages/StudentsEdit";
+import StudentsList from "./pages/StudentsList";
+import TeachersEdit from "./pages/TeachersEdit";
+import TeachersList from "./pages/TeachersList";
+import UserEdit from "./pages/UserEdit";
+import UserList from "./pages/UserList";
 
 /* END MY VIEWS IMPORT */
 
@@ -40,8 +56,24 @@ class Routes extends Component {
 
               {/* START MY VIEWS */}
 
-              <PrivateRoute exact path="/students" component={ Students }  />
-              <PrivateRoute exact path="/teacher" component={ Teachers }  />
+              <PrivateRoute exact path="/citieses/:id" component={ CitiesEdit }  />
+              <PrivateRoute exact path="/citieses" component={ CitiesList }  />
+              <PrivateRoute exact path="/classeses/:id" component={ ClassesEdit }  />
+              <PrivateRoute exact path="/classeses" component={ ClassesList }  />
+              <PrivateRoute exact path="/clubses/:id" component={ ClubsEdit }  />
+              <PrivateRoute exact path="/clubses" component={ ClubsList }  />
+              <PrivateRoute exact path="/countrieses/:id" component={ CountriesEdit }  />
+              <PrivateRoute exact path="/countrieses" component={ CountriesList }  />
+              <PrivateRoute exact path="/eventses/:id" component={ EventsEdit }  />
+              <PrivateRoute exact path="/eventses" component={ EventsList }  />
+              <PrivateRoute exact path="/stateses/:id" component={ StatesEdit }  />
+              <PrivateRoute exact path="/stateses" component={ StatesList }  />
+              <PrivateRoute exact path="/studentses/:id" component={ StudentsEdit }  />
+              <PrivateRoute exact path="/studentses" component={ StudentsList }  />
+              <PrivateRoute exact path="/teacherses/:id" component={ TeachersEdit }  />
+              <PrivateRoute exact path="/teacherses" component={ TeachersList }  />
+              <PrivateRoute exact path="/users/:id" component={ UserEdit }  />
+              <PrivateRoute exact path="/users" component={ UserList }  />
 
              {/* END MY VIEWS */}
 

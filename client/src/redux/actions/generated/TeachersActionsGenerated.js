@@ -23,6 +23,138 @@ let actionsFunction = {
 
   //CRUD METHODS
 
+  // Create teachers
+  createTeachers: function(teachers) {
+    return function(dispatch) {
+      return TeachersApi
+        .createTeachers(teachers)
+        .then(teachers => {
+          dispatch(actionsFunction.createTeachersSuccess(teachers));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  createTeachersSuccess: function(teachers) {
+    return { type: types.CREATE_TEACHERS_SUCCESS, payload: teachers };
+  },
+
+
+  // Delete teachers
+  deleteTeachers: function(id) {
+    return function(dispatch) {
+      return TeachersApi
+        .deleteTeachers(id)
+        .then(teachers => {
+          dispatch(actionsFunction.deleteTeachersSuccess(teachers));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  deleteTeachersSuccess: function(teachers) {
+    return { type: types.DELETE_TEACHERS_SUCCESS, payload: teachers };
+  },
+
+
+  // Find by _class
+  findBy_class: function(key) {
+    return function(dispatch) {
+      return TeachersApi
+        .findBy_class(key)
+        .then(item => {
+          dispatch(actionsFunction.findBy_classSuccess(item));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  findBy_classSuccess: function(item) {
+    return { type: types.FINDBY_CLASS_TEACHERS_SUCCESS, payload: item };
+  },
+
+
+  // Find by _club
+  findBy_club: function(key) {
+    return function(dispatch) {
+      return TeachersApi
+        .findBy_club(key)
+        .then(item => {
+          dispatch(actionsFunction.findBy_clubSuccess(item));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  findBy_clubSuccess: function(item) {
+    return { type: types.FINDBY_CLUB_TEACHERS_SUCCESS, payload: item };
+  },
+
+
+  // Get teachers
+  loadTeachers: function(id) {
+    return function(dispatch) {
+      return TeachersApi
+        .getOneTeachers(id)
+        .then(teachers => {
+          dispatch(actionsFunction.loadTeachersSuccess(teachers));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  loadTeachersSuccess: function(teachers) {
+    return { type: types.GET_TEACHERS_SUCCESS, payload: teachers };
+  },
+
+  // Load  list
+  loadTeachersList: function() {
+    return function(dispatch) {
+      return TeachersApi
+        .getTeachersList()
+        .then(list => {
+          dispatch(actionsFunction.loadTeachersListSuccess(list));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  loadTeachersListSuccess: function(list) {
+    return { type: types.LIST_TEACHERS_SUCCESS, payload: list };
+  },
+
+	
+  // Save teachers
+  saveTeachers: function(teachers) {
+    return function(dispatch) {
+      return TeachersApi
+        .saveTeachers(teachers)
+        .then(teachers => {
+          dispatch(actionsFunction.saveTeachersSuccess(teachers));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  saveTeachersSuccess: function(teachers) {
+    return { type: types.UPDATE_TEACHERS_SUCCESS, payload: teachers };
+  },
+
+
 };
 
 export default actionsFunction;
